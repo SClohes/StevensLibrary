@@ -1,0 +1,4 @@
+Name: Items
+Type: FolderType
+Children:
+- File: Graphics/Graphics.yaml
