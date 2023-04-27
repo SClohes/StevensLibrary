@@ -21,5 +21,13 @@ Project:
    Uri: 'urn:FTOptix:UI'
    Module: FTOptix.UI
    Version: 1.0
+  6:
+   Uri: 'urn:FTOptix:Store'
+   Module: FTOptix.Store
+   Version: 1.0
+  7:
+   Uri: 'urn:FTOptix:NetLogic'
+   Module: FTOptix.NetLogic
+   Version: 1.0
  Nodes:
  - File: Nodes/StevensLibrary.yaml

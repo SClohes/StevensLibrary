@@ -1,0 +1,372 @@
+Name: NetLogic
+Type: FolderType
+Children:
+- Name: MQTTBrokerLogic
+  Type: ObjectLibraryItem
+  Children:
+  - Name: MQTTBrokerLogic
+    Id: g=55171d1028ced62083b39b4ad25a7133
+    Supertype: NetLogic
+    ReferenceType: HasComponent
+    Children:
+    - Class: Method
+      Name: StartListeningToVariables
+    - Name: MqttServer
+      Type: BaseDataVariableType
+      DataType: Boolean
+      Value: false
+      Children:
+      - Name: IPAddress
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "127.0.0.1"
+      - Name: Port
+        Type: BaseDataVariableType
+        DataType: UInt16
+        Value: 1883
+      - Name: UseSSL
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: true
+        Children:
+        - Name: Certificate
+          Type: BaseDataVariableType
+          DataType: ResourceUri
+          Value: "ns=4;%PROJECTDIR%/serverbroker.pfx"
+        - Name: CertificatePassword
+          Type: BaseDataVariableType
+          DataType: Password
+          Value: ""
+      - Name: AutoStart
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: true
+      - Name: UserAuthentication
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+        Children:
+        - Name: AuthorizedUsers
+          Type: BaseDataVariableType
+          DataType: String
+          ValueRank: OneDimension
+          ArrayDimensions: [0]
+          Value: ["User1"]
+      - Name: IsRunning
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+      - Name: IsDebuggingMode
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: true
+      - Name: MaxNumberOfConnections
+        Type: BaseDataVariableType
+        DataType: Int32
+        Value: 10
+      - Name: NumberOfConnections
+        Type: BaseDataVariableType
+        DataType: Int32
+        Value: 0
+    - Name: MqttClient
+      Type: BaseDataVariableType
+      DataType: Boolean
+      Value: true
+      Children:
+      - Name: IPAddress
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "test.mosquitto.org"
+        Children:
+        - Name: DynamicLink
+          Type: DynamicLink
+          DataType: NodePath
+          Value: "broker.hivemq.com"
+          Children:
+          - Name: Mode
+            Type: BaseVariableType
+            DataType: DynamicLinkMode
+            ModellingRule: Optional
+            Value: 2
+      - Name: Port
+        Type: BaseDataVariableType
+        DataType: UInt16
+        Value: 1883
+      - Name: UseSSL
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+        Children:
+        - Name: CaCertificate
+          Type: BaseDataVariableType
+          DataType: ResourceUri
+          Value: "ns=4;%PROJECTDIR%/ca.crt"
+        - Name: ClientCertificate
+          Type: BaseDataVariableType
+          DataType: ResourceUri
+          Value: "ns=4;%PROJECTDIR%/client.pfx"
+        - Name: ClientCertificatePassword
+          Type: BaseDataVariableType
+          DataType: Password
+          Value: ""
+        - Name: AllowUntrustedCertificates
+          Type: BaseDataVariableType
+          DataType: Boolean
+          Value: false
+      - Name: UserAuthentication
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+        Children:
+        - Name: AuthorizedUsers
+          Type: BaseDataVariableType
+          DataType: String
+          ValueRank: OneDimension
+          ArrayDimensions: [0]
+          Value: ["User1"]
+      - Name: IsRunning
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+      - Name: IsDebuggingMode
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+      - Name: ClientId
+        Type: BaseDataVariableType
+        DataType: String
+        Value: "StevenTest3"
+      - Name: Connected
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+      - Name: SentPackages
+        Type: BaseDataVariableType
+        DataType: Int32
+        Value: 0
+      - Name: ReceivedPackages
+        Type: BaseDataVariableType
+        DataType: Int32
+        Value: 0
+      - Name: DynamicLink
+        Type: DynamicLink
+        DataType: NodePath
+        Value: "../../../Model/MTTQServerToggle"
+        Children:
+        - Name: Mode
+          Type: BaseVariableType
+          DataType: DynamicLinkMode
+          ModellingRule: Optional
+          Value: 2
+    - Class: Method
+      Name: StartMQTTServer
+    - Name: Subscriber
+      Type: BaseDataVariableType
+      DataType: Boolean
+      Value: true
+      Children:
+      - Name: LiveTags
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: true
+        Children:
+        - Name: LiveTagsFolder
+          Type: NodePointer
+          DataType: NodeId
+          Value: {"IdType":2,"Id":"576872621d365556ba6058ee15cfcf92","Namespace":4}
+          Children:
+          - Name: Kind
+            Type: PropertyType
+            DataType: NodeId
+            Value: {"IdType":0,"Id":0,"Namespace":-1}
+          - Name: NodeClass
+            Type: PropertyType
+            DataType: NodePointerNodeClass
+            ModellingRule: Optional
+            Value: 0
+        - Name: LiveTagsTopic
+          Type: BaseDataVariableType
+          DataType: String
+          Value: "aaaaTopic1"
+        - Name: LastPackageTimestamp
+          Type: BaseDataVariableType
+          DataType: DateTime
+          Value: "1601-01-01T00:00:00.0000000"
+      - Name: StoreTables
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: true
+        Children:
+        - Name: Store
+          Type: NodePointer
+          DataType: NodeId
+          Value: {"IdType":2,"Id":"66e259a58c646f4811fc1cb6fa753fe3","Namespace":4}
+          Children:
+          - Name: Kind
+            Type: PropertyType
+            DataType: NodeId
+            Value: {"Id":1,"Namespace":6}
+        - Name: StoreTablesTopic
+          Type: BaseDataVariableType
+          DataType: String
+          Value: "aaaaTopic1_Data"
+      - Name: CustomPayload
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+        Children:
+        - Name: CustomPayloadMessage
+          Type: BaseDataVariableType
+          DataType: String
+          Value: "0"
+        - Name: CustomPayloadTopic
+          Type: BaseDataVariableType
+          DataType: String
+          Value: "/InsertHereYourCustomPayloadTopic"
+    - Name: Publisher
+      Type: BaseDataVariableType
+      DataType: Boolean
+      Value: false
+      Children:
+      - Name: LiveTags
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: true
+        Children:
+        - Name: LiveTagsPeriod
+          Type: BaseDataVariableType
+          DataType: Duration
+          Value: "0:00:00:0.0000000"
+        - Name: LiveTagsFolder
+          Type: NodePointer
+          DataType: NodeId
+          Value: {"IdType":2,"Id":"b78897c8f053fbba7e9a24e6d936dd00","Namespace":4}
+          Children:
+          - Name: Kind
+            Type: PropertyType
+            DataType: NodeId
+            Value: {"Id":61}
+          - Name: NodeClass
+            Type: PropertyType
+            DataType: NodePointerNodeClass
+            ModellingRule: Optional
+            Value: 0
+        - Name: LiveTagsTopic
+          Type: BaseDataVariableType
+          DataType: String
+          Value: "/InsertHereYourLiveTagsTopic"
+        - Name: QoS
+          Type: BaseDataVariableType
+          DataType: Int32
+          Value: 2
+        - Name: Retain
+          Type: BaseDataVariableType
+          DataType: Boolean
+          Value: false
+      - Name: StoreTables
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+        Children:
+        - Name: Store
+          Type: NodePointer
+          DataType: NodeId
+          Value: {"IdType":2,"Id":"113f36a1be5358c7c67f1760de6dbd85","Namespace":4}
+          Children:
+          - Name: Kind
+            Type: PropertyType
+            DataType: NodeId
+            Value: {"Id":1,"Namespace":6}
+        - Name: TableNames
+          Type: BaseDataVariableType
+          DataType: Int32
+          Value: 0
+          Children:
+          - Name: Table1
+            Type: BaseDataVariableType
+            DataType: String
+            Value: "uReg_Readings"
+          - Name: Table2
+            Type: BaseDataVariableType
+            DataType: String
+            Value: "uReg_States"
+          - Name: Table3
+            Type: BaseDataVariableType
+            DataType: String
+            Value: "PR"
+        - Name: PreserveData
+          Type: BaseDataVariableType
+          DataType: Boolean
+          Value: true
+        - Name: MaximumItemsPerPacket
+          Type: BaseDataVariableType
+          DataType: Int32
+          Value: 100
+        - Name: MaximumPublishTime
+          Type: BaseDataVariableType
+          DataType: Duration
+          Value: "0:00:00:5.0000000"
+        - Name: MinimumPublishTime
+          Type: BaseDataVariableType
+          DataType: Duration
+          Value: "0:00:00:1.0000000"
+        - Name: StoreTablesTopic
+          Type: BaseDataVariableType
+          DataType: String
+          Value: "/InsertHereYourDataloggerTopic"
+        - Name: QoS
+          Type: BaseDataVariableType
+          DataType: Int32
+          Value: 2
+        - Name: Retain
+          Type: BaseDataVariableType
+          DataType: Boolean
+          Value: false
+        - Name: TablesPrefix
+          Type: BaseDataVariableType
+          DataType: String
+          Value: "0"
+          Children:
+          - Name: DynamicLink
+            Type: DynamicLink
+            DataType: NodePath
+            Value: "../../../../../Model/SiteName"
+            Children:
+            - Name: Mode
+              Type: BaseVariableType
+              DataType: DynamicLinkMode
+              ModellingRule: Optional
+              Value: 2
+        - Name: AllRows
+          Type: BaseDataVariableType
+          DataType: Boolean
+          Value: true
+      - Name: CustomPayload
+        Type: BaseDataVariableType
+        DataType: Boolean
+        Value: false
+        Children:
+        - Name: CustomPayloadMessage
+          Type: BaseDataVariableType
+          DataType: String
+          Value: "0"
+        - Name: CustomPayloadTopic
+          Type: BaseDataVariableType
+          DataType: String
+          Value: "/InsertHereYourCustomPayloadTopic"
+        - Name: CustomPayloadPeriod
+          Type: BaseDataVariableType
+          DataType: Duration
+          Value: "0:00:00:5.0000000"
+        - Name: QoS
+          Type: BaseDataVariableType
+          DataType: Int32
+          Value: 2
+        - Name: Retain
+          Type: BaseDataVariableType
+          DataType: Boolean
+          Value: false
+    - Class: Method
+      Name: FetchData
+    - Class: Method
+      Name: StartCustomPayload
